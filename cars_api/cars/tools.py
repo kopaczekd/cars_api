@@ -8,8 +8,8 @@ def does_car_exists(data):
     count_of_models = response.json()['Count']
     if count_of_models > 0:
         models = response.json()['Results']
-        given_model = data["model"]
+        given_model = data["model"].lower()
         for model in models:
-            if given_model == model['Model_Name']:
+            if given_model == model['Model_Name'].lower():
                 return True
     return False
