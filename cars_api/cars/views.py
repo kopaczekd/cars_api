@@ -1,8 +1,8 @@
-from rest_framework.generics import ListAPIView
-from .serializers import CarsSerializer
+from rest_framework.generics import ListCreateAPIView
+from .serializers import CarSerializer
 from .models import Car
 
 
-class CarListView(ListAPIView):
-    serializer_class = CarsSerializer
+class CarListView(ListCreateAPIView):
+    serializer_class = CarSerializer
     queryset = Car.objects.all()
