@@ -4,6 +4,3 @@ cars_api/db.sqlite3
 # PyCharm files
 ../.idea/
 **/__pycache__/**
-
-# Django migrations
-**/migrations/**
