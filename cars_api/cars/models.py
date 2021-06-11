@@ -10,4 +10,4 @@ class Car(models.Model):
     )
 
     def __str__(self):
-        return f'{self.make} {self.model}'
+        return f'{self.id} - {self.make} {self.model}'

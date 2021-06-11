@@ -1,9 +1,10 @@
 from rest_framework.generics import ListCreateAPIView, DestroyAPIView
+
 from .serializers import CarSerializer
 from .models import Car
 
 
-class CarListView(ListCreateAPIView):
+class CarListCreateView(ListCreateAPIView):
     serializer_class = CarSerializer
     queryset = Car.objects.all()
 

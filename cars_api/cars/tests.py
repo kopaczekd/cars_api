@@ -7,7 +7,7 @@ from .models import Car
 
 class CarApiTest(APITestCase):
     def setUp(self):
-        self.url_list_create = reverse('cars:car_list')
+        self.url_list_create = reverse('cars:car_list_create')
         Car.objects.create(make='Lamborghini', model='Gallardo')
         Car.objects.create(make='Volkswagen', model='Passat')
 
