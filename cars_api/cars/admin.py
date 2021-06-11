@@ -5,5 +5,5 @@ from .models import Car
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
-    list_display = ["id", "make", "model"]
-    list_filter = ("make",)
+    list_display = ['id', 'make', 'model', 'rates_number']
+    list_filter = ('make',)

@@ -6,7 +6,7 @@ from cars.models import Car
 from rate.models import Rate
 
 
-class RateApiTest(APITestCase):
+class RateAPITest(APITestCase):
     def setUp(self):
         self.car = Car.objects.create(make='Lamborghini', model='Gallardo')
         self.url_list_create = reverse('rate:list_create')

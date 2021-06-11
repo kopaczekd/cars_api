@@ -8,6 +8,7 @@ class Car(models.Model):
     model = models.CharField(
         max_length=255
     )
+    rates_number = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return f'{self.id} - {self.make} {self.model}'
