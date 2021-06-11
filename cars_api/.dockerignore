@@ -7,5 +7,5 @@ __pycache__
 .git
 .gitignore
 
-# Vs code files
+# VS code files
 .vscode
