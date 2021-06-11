@@ -5,5 +5,5 @@ from .views import RateListCreateView
 app_name = 'rate'
 
 urlpatterns = [
-    path('', RateListCreateView.as_view(), name='rate_list_create')
+    path('', RateListCreateView.as_view(), name='list_create')
 ]

@@ -7,7 +7,7 @@ from .models import Car
 
 class CarApiTest(APITestCase):
     def setUp(self):
-        self.url_list_create = reverse('cars:car_list_create')
+        self.url_list_create = reverse('cars:list_create')
         Car.objects.create(make='Lamborghini', model='Gallardo')
         Car.objects.create(make='Volkswagen', model='Passat')
 
@@ -37,13 +37,13 @@ class CarApiTest(APITestCase):
         response_get_before_deletion = self.client.get(self.url_list_create)
         self.assertEqual(len(response_get_before_deletion.data), 2)
         first_car_id = response_get_before_deletion.data[0]['id']
-        url_delete = reverse('cars:car_delete', args=[first_car_id])
+        url_delete = reverse('cars:delete', args=[first_car_id])
         response_deletion = self.client.delete(url_delete)
         self.assertEqual(response_deletion.status_code, status.HTTP_204_NO_CONTENT)
         response_get_after_deletion = self.client.get(self.url_list_create)
         self.assertEqual(len(response_get_after_deletion.data), 1)
 
     def test_car_deletion_failure(self):
-        url_delete = reverse('cars:car_delete', args=[777])
+        url_delete = reverse('cars:delete', args=[777])
         response_deletion = self.client.delete(url_delete)
         self.assertEqual(response_deletion.status_code, status.HTTP_404_NOT_FOUND)

@@ -9,7 +9,7 @@ from rate.models import Rate
 class RateApiTest(APITestCase):
     def setUp(self):
         self.car = Car.objects.create(make='Lamborghini', model='Gallardo')
-        self.url_list_create = reverse('rate:rate_list_create')
+        self.url_list_create = reverse('rate:list_create')
         Rate.objects.create(car_id=self.car, rating=5)
 
     def test_rate_creation_success(self):
