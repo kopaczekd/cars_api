@@ -3,12 +3,13 @@ from rest_framework.test import APITestCase
 from rest_framework import status
 
 from .models import Car
+from rate.models import Rate
 
 
 class CarApiTest(APITestCase):
     def setUp(self):
         self.url_list_create = reverse('cars:list_create')
-        Car.objects.create(make='Lamborghini', model='Gallardo')
+        self.car = Car.objects.create(make='Lamborghini', model='Gallardo')
         Car.objects.create(make='Volkswagen', model='Passat')
 
     def test_car_creation_success(self):
@@ -47,3 +48,11 @@ class CarApiTest(APITestCase):
         url_delete = reverse('cars:delete', args=[777])
         response_deletion = self.client.delete(url_delete)
         self.assertEqual(response_deletion.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_calculating_avg_rating(self):
+        Rate.objects.create(car_id=self.car, rating=5)
+        Rate.objects.create(car_id=self.car, rating=4)
+        response = self.client.get(self.url_list_create)
+        for car in response.data:
+            if car['id'] == self.car:
+                self.assertEqual(car['avg_rating'], 4.5)
