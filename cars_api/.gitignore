@@ -2,5 +2,5 @@
 cars_api/db.sqlite3
 
 # PyCharm files
-.idea/
+../.idea/
 **/__pycache__/**
