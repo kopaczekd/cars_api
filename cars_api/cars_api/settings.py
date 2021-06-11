@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cars.apps.CarsConfig',
     'rate.apps.RateConfig',
+    'popular.apps.PopularConfig',
     'rest_framework',
 ]
 
