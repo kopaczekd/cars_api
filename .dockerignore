@@ -1,0 +1,11 @@
+# PyCharm files
+.idea/
+__pycache__
+*.pyc
+
+# Git files
+.git
+.gitignore
+
+# Vs code files
+.vscode
