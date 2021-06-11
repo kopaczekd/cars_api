@@ -1,1 +1,1 @@
-web: gunicorn cars_api.cars_api.wsgi
+web: gunicorn cars_api.cars_api.wsgi:app
