@@ -100,7 +100,7 @@ All functionalities we can seperate for few endpoints:
       "id" : 2,
       "make" : "Volkswagen",
       "model" : "Passat",
-      "rates_number" : 31``
+      "rates_number" : 31
     }
 ]
 
