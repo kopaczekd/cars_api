@@ -36,3 +36,9 @@ class CarSerializer(ModelSerializer):
             return data
         else:
             raise ValidationError(detail="Car doesn't exist.")
+
+
+class RateSerializer(ModelSerializer):
+    class Meta:
+        model = Rate
+        fields = ['car_id', 'rating']

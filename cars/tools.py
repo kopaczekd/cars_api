@@ -1,5 +1,7 @@
 import requests
 
+from cars.models import Car
+
 
 def does_car_exists(data):
     given_make = data["make"]
@@ -13,3 +15,9 @@ def does_car_exists(data):
             if given_model == model['Model_Name'].lower():
                 return True
     return False
+
+
+def increase_rates_number(car_id):
+    car = Car.objects.get(id=car_id)
+    car.rates_number += 1
+    car.save()
