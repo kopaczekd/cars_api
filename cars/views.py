@@ -1,4 +1,5 @@
 from rest_framework.generics import ListCreateAPIView, DestroyAPIView, ListAPIView
+from django.views.generic import TemplateView
 
 from .serializers import CarSerializer, RateSerializer, PopularCarsSerializer
 from .models import Rate, Car
@@ -31,3 +32,7 @@ class PopularCarsListView(ListAPIView):
 
     def get_queryset(self):
         return Car.objects.all().order_by('-rates_number')
+
+
+class IndexView(TemplateView):
+    template_name = "index.html"
