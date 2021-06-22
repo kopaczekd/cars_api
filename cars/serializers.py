@@ -3,9 +3,8 @@ from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from rest_framework.exceptions import ValidationError
 from rest_framework.validators import UniqueTogetherValidator
 
-from rate.models import Rate
 from .tools import does_car_exists
-from .models import Car
+from .models import Car, Rate
 
 
 class CarSerializer(ModelSerializer):
