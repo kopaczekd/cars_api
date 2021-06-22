@@ -1,11 +1,8 @@
-from rest_framework.generics import ListCreateAPIView, DestroyAPIView
+from rest_framework.generics import ListCreateAPIView, DestroyAPIView, ListAPIView
 
-from .serializers import RateSerializer
-from .models import Rate
+from .serializers import CarSerializer, RateSerializer, PopularCarsSerializer
+from .models import Rate, Car
 from .tools import increase_rates_number
-
-from .serializers import CarSerializer
-from .models import Car
 
 
 class CarListCreateView(ListCreateAPIView):
@@ -27,3 +24,10 @@ class RateListCreateView(ListCreateAPIView):
         car_id = serializer.validated_data["car_id"].id
         increase_rates_number(car_id)
         serializer.save()
+
+
+class PopularCarsListView(ListAPIView):
+    serializer_class = PopularCarsSerializer
+
+    def get_queryset(self):
+        return Car.objects.all().order_by('-rates_number')

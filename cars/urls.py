@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import CarListCreateView, CarDeleteView, RateListCreateView
+from .views import CarListCreateView, CarDeleteView, RateListCreateView, PopularCarsListView
 
 app_name = 'cars'
 
@@ -9,5 +9,5 @@ urlpatterns = [
     path('cars/', CarListCreateView.as_view(), name='cars_list_create'),
     path('cars/<int:id>/', CarDeleteView.as_view(), name='cars_delete'),
     path('rate/', RateListCreateView.as_view(), name='rate_list_create'),
-    # path('popular/', include('popular.urls')),
+    path('popular/', PopularCarsListView.as_view(), name='popular_list'),
 ]

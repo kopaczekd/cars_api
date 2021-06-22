@@ -42,3 +42,9 @@ class RateSerializer(ModelSerializer):
     class Meta:
         model = Rate
         fields = ['car_id', 'rating']
+
+
+class PopularCarsSerializer(ModelSerializer):
+    class Meta:
+        model = Car
+        fields = '__all__'
