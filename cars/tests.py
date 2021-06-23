@@ -1,8 +1,10 @@
 from django.urls import reverse
+from django.test import TestCase
 from rest_framework.test import APITestCase
 from rest_framework import status
 
 from .models import Car, Rate
+from .tools import does_car_exists
 
 
 class CarAPITest(APITestCase):
@@ -123,3 +125,19 @@ class RateAPITest(APITestCase):
         response = self.client.get(self.url_list_create)
         self.assertEqual(len(response.data), 1)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+class DoesCarExistsMethodTests(TestCase):
+    def test_car_exists(self):
+        data = {
+            'make': 'Lamborghini',
+            'model': 'Aventador'
+        }
+        self.assertTrue(does_car_exists(data))
+
+    def test_car_doesnt_exists(self):
+        data = {
+            'make': 'Lamborghini',
+            'model': 'no-model'
+        }
+        self.assertFalse(does_car_exists(data))
