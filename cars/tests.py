@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.test import TestCase
 from rest_framework.test import APITestCase
 from rest_framework import status
+import requests
 
 from .models import Car, Rate
 from .tools import does_car_exists
@@ -124,6 +125,13 @@ class RateAPITest(APITestCase):
     def test_taking_all_rates(self):
         response = self.client.get(self.url_list_create)
         self.assertEqual(len(response.data), 1)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+class TestExternalAPI(TestCase):
+    def test_connection(self):
+        url = 'https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/Lamborghini?format=json'
+        response = requests.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
